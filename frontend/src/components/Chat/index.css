@@ -1,0 +1,41 @@
+.TextMessage{
+    font-size: 16px;
+    margin-bottom: 5px;
+    max-width: max-content;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.sendmessagebox{
+    position: fixed;
+    padding: auto 24px;
+    bottom: 0px;
+    width: 100%;
+    right: 0;
+    left: 0;
+    background: #fff;
+
+}
+
+
+
+
+.displays {
+    height: calc(100vh - 180px);
+
+    background-color: #31094544;
+    overflow-y: auto;
+    scrollbar-width: none;
+
+   
+}
+/* 
+.displays.MuiBox-root.css-0 {
+    background: red;
+    height: clac;
+    height: calc(100vh - 50mm);
+    overflow: scroll;
+    scrollbar-width: none;
+    padding-bottom: 5%mm;
+    padding-bottom: 45px;
+    margin-bottom: 100px;
+} */

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="output">hello</p>
+    <p id="fea"></p>
+
+    <input type="text" id="userInput" placeholder="Enter text">
+    <button id="submitButton">Submit</button>
+
+    <!-- Add an <h1> element to display the API response title -->
+    <h1 id="apiResponseTitle"></h1>
+
+    <script>
+
+      setTimeout(() => {
+        console.log('console after every second')
+        
+      }, 1000);
+
+
+
+
+
+
+
+        // Create a variable named "count" and set its value to 2
+        var count = 2;
+
+        // Get a reference to the <p> element with the id "output"
+        var outputElement = document.getElementById("output");
+        // Get a reference to the <p> element with the id "fea"
+        var feaElement = document.getElementById("fea");
+        // Get a reference to the input field and submit button
+        var userInput = document.getElementById("userInput");
+        var submitButton = document.getElementById("submitButton");
+
+        // Declare a variable to store the API response
+        var apiResponseTitle = "";
+
+        // Get a reference to the <h1> element for displaying the API response title
+        var apiResponseTitleElement = document.getElementById("apiResponseTitle");
+
+        // Update the content of the <p> element to display the value of "count" after "hello"
+        outputElement.textContent += " " + count;
+
+        // Add a click event listener to the submit button
+        submitButton.addEventListener("click", function () {
+            var text = userInput.value; // Get the text from the input field
+
+            // Simulate sending the text to a fake API (JSONPlaceholder)
+            fetch('https://jsonplaceholder.typicode.com/posts', {
+                method: 'POST',
+                body: JSON.stringify({
+                    title: text,
+                    body: 'This is a test post.',
+                    userId: 1
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    // Display the response from the fake API
+                    feaElement.textContent = 'You have entered: ' + data.title;
+
+                    // Store the API response title in a variable
+                    apiResponseTitle = data.title;
+
+                    // Display the API response title in the <h1> element
+                    apiResponseTitleElement.textContent = apiResponseTitle;
+                })
+                .catch((error) => {
+                    feaElement.textContent = 'Error: ' + error;
+                });
+
+            // Clear the input field after submitting
+            userInput.value = "";
+        });
+    </script>
+</body>
+
+</html>
