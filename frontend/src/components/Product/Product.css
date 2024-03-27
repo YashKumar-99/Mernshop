@@ -1,0 +1,15 @@
+.active {
+    background-color: black !important;
+    color: white !important;
+}
+
+.normal {
+    background-color: white;
+    color: black;
+}
+.loader-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adjust as needed */
+}

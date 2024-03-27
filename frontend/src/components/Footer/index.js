@@ -1,10 +1,10 @@
 import React from 'react'
+import './index.css'
 
 const Footer = () => {
     return (
-        <footer>
+        <footer className='footer-main'>
             {/* Content to display on every page */}
-            <p>added footer</p>
             <p>© 2024 My App Footer</p>
         </footer>)
 }

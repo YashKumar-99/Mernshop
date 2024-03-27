@@ -1,13 +1,25 @@
 .App {
   text-align: center;
 }
-body > iframe[style*='2147483647']{
+
+body>iframe[style*='2147483647'] {
   display: none !important;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+
+hr.bottomBorder {
+  background: #1976d2;
+  /* border: 1px solid red; */
+  height: 2px;
+  /* z-index: 999 !important; */
+  width: 10%;
+  /* padding: 20px; */
+  margin-bottom: 5%;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -45,6 +57,7 @@ body > iframe[style*='2147483647']{
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

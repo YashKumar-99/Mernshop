@@ -551,20 +551,55 @@ const tempProduct = async (req, res) => {
 
 
 
+// const getAllProduct = async (req, res) => {
+
+//     console.log("aa")
+
+//     console.log(product,"productLength")
+//     console.log(product,"bb")
+
+//     const data = await product.find().populate('productImage');
+
+//     console.log(data)
+//     res.status(201).json(data);
+// }
+
+
+
+
 const getAllProduct = async (req, res) => {
+    const page = parseInt(req.query.page) || 1; // Extract page parameter from request query, default to 1
+    const limit = parseInt(req.query.limit) || 9; // Extract limit parameter from request query, default to 9
 
+    try {
+        const totalProducts = await product.countDocuments();
+        const totalPages = Math.ceil(totalProducts / limit);
+        const skip = (page - 1) * limit;
 
+        const data = await product.find().populate('productImage').skip(skip).limit(limit);
 
-    console.log("productess");
+        // Construct pagination metadata
+        const pagination = {
+            currentPage: page,
+            totalPages: totalPages,
+            hasNextPage: page < totalPages,
+            hasPrevPage: page > 1,
+            totalProducts: totalProducts
+        };
 
-    const data = await product.find().populate('productImage');
-    // console.log(data, "hhhhhh")
-
-    res.status(201).json(data);
-
-
-
+        res.status(200).json({ products: data, pagination: pagination });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
 }
+
+
+
+
+
+
+
 
 
 
